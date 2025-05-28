@@ -1,0 +1,5 @@
+default:
+  dirs:
+    rawdata:   "data/raw"          # arquivos originais (INEP, RAIS, etc.)
+    clean:     "data/processed"    # RDS/FST já tratados
+    outcomes:  "outputs"           # tabelas, figuras, logs e artefatos exportáveis
