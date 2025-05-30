@@ -8,17 +8,18 @@
 # 1) Loading packages
 pacman::p_load(
   # Workflow
-  targets, fs, config,
+  targets, fs, config, glue, purrr,
   # Data reading
   haven, readxl, readr,
   # Data wrangling
-  tidyverse, dplyr, data.table, lubridate, reshape2, tidyr, stringi, stringr, broom,
+  tidyverse, dplyr, data.table, lubridate, reshape2, tidyr, stringi,
+  stringr, broom, vroom, janitor,
   # Graphics
   ggplot2, lattice,
   # Reproducible
   knitr, rmarkdown, kableExtra,
   # Computation
-  foreach,
+  foreach, 
   # Models
   did, synthdid
 )
