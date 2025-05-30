@@ -51,7 +51,8 @@ process_year <- function(y) {
     read_cb(y, "mat"),
     read_cb(y, "sch"),
     by = "co_entidade",
-    suffix  = c("", "_sch")
+    suffix  = c("", "_sch"),
+    na_matches = "never"
   )
   
   # Joining Undergraduate Census
@@ -59,7 +60,8 @@ process_year <- function(y) {
     read_cs(y, "mat"),
     read_cs(y, "sch"),
     by = "co_ies",
-    suffix  = c("", "_sch")
+    suffix  = c("", "_sch"),
+    na_matches = "never"
   )
   
   # From years 2009 to 2022, joining with t+1 Undergraduate Census (Outcome is in t+1)
@@ -69,7 +71,8 @@ process_year <- function(y) {
     cbcs_y  <- cb_y |>
       left_join(cs_next,
                 by      = "cpf_masc",
-                suffix  = c("", "_cs"))
+                suffix  = c("", "_cs"),
+                na_matches = "never")
   } else {
     # 2023 only matters School Census and SAT Information
     cbcs_y <- cb_y

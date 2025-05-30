@@ -192,7 +192,7 @@ rbyy <- list(
 yr <- 2009
 
 # Importing Function
-import_clean_cs <- function(yr) {
+import_clean_enem <- function(yr) {
   yr_chr   <- as.character(yr)
   desired  <- cbyy[[yr_chr]]
   rename_v <- rbyy[[yr_chr]]
@@ -243,4 +243,4 @@ import_clean_cs <- function(yr) {
   invisible(path_out)
 }
 
-purrr::walk(years, import_clean_cs)
+purrr::walk(years, import_clean_enem)

@@ -21,7 +21,7 @@ pacman::p_load(
   # Computation
   foreach, 
   # Models
-  did, synthdid
+  did, synthdid, contdid
 )
 
 # 2) Setting the directories
