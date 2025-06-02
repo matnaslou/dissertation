@@ -1,7 +1,7 @@
 ##########################################################################
 #             Project: Dissertation                                      #
-#         Name: 10e_import_enem                                          #
-#     Description: Import and Treat SAT (ENEM)                           #
+#         Name: 40a_merge_educ_data                                       #
+#     Description: Merge education data (Census, SAT)                    #
 #       Author : Matheus N. Loureiro                                     #
 ##########################################################################
 # 1) Run Setup
@@ -65,13 +65,13 @@ process_year <- function(y) {
   )
   
   # From years 2009 to 2022, joining with t+1 Undergraduate Census (Outcome is in t+1)
-  if (y + 1 <= max(YEARS) + 1) {
+  if (y + 1 <= max(years) + 1) {
     cs_next <- read_cs(y + 1, "mat") |>
       select(cpf_masc, everything())     # ID para juntar
     cbcs_y  <- cb_y |>
       left_join(cs_next,
                 by      = "cpf_masc",
-                suffix  = c("", "_cs"),
+                suffix  = c("", "_cs_t1"),
                 na_matches = "never")
   } else {
     # 2023 only matters School Census and SAT Information
@@ -87,7 +87,7 @@ process_year <- function(y) {
     left_join(enem_y, by = "cpf_masc")
   
   # Saving as .csv
-  out_path <- fs::path(output, str_glue("panel_{y}.csv"))
+  out_path <- fs::path(output, str_glue("educ_panel_{y}.csv"))
   
   vroom_write(panel_y, out_path, delim = ";", progress = FALSE)
   
